@@ -56,7 +56,7 @@ def scrape_member(url)
     term: '2013',
     source: url,
   }
-  puts data
+  # puts data
   ScraperWiki.save_sqlite([:id, :term], data)
 end
 
