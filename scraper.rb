@@ -16,21 +16,73 @@ class MembersPage < Scraped::HTML
   end
 end
 
-def noko_for(url)
-  Nokogiri::HTML(open(url).read)
-end
+class MemberPage < Scraped::HTML
+  field :id do
+    url[/(\d+)$/, 1]
+  end
 
-def date_from(str)
-  return if str.to_s.empty?
-  Date.parse(str)
-end
+  field :name do
+    noko.css('h1.page-title').text.gsub(', M.P.','').tidy
+  end
 
-def party_from(node)
-  return ['Democratic Labour Party', 'DLP'] if node.text.include? 'www.dlpbarbados.org'
-  return ['Barbados Labour Party', 'BLP'] if node.text.include? 'www.blp.org.bb'
-  return ['Barbados Labour Party', 'BLP'] if node.text.include? 'voteblp.com'
-  return ['Barbados Labour Party', 'BLP'] if node.css('img/@src').text.include? 'blp_logo.jpg'
-  raise binding.pry
+  field :image do
+    noko.css('div.entry-thumb img/@src').text
+  end
+
+  field :constituency do
+    noko.css('.post-excerpt').text.tidy
+  end
+
+  field :party do
+    party_info.first
+  end
+
+  field :party_id do
+    party_info.last
+  end
+
+  field :role do
+    noko.xpath('.//h3[contains(.,"Designation")]/following-sibling::p').text.tidy
+  end
+
+  field :telephone do
+    noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Telephone:\s*(.*?)\s*$/, 1].tidy
+  end
+
+  field :fax do
+    noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Fax:\s*(.*?)\s*$/, 1].tidy
+  end
+
+  field :email do
+    noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text.lines.find { |l| l.include? '@' }.tidy
+  end
+
+  field :term do
+    '2013'
+  end
+
+  field :source do
+    url
+  end
+
+  private
+
+  def party_info
+    party_from(noko.xpath('.//h2[contains(.,"Party")]/following-sibling::p[1]'))
+  end
+
+  def date_from(str)
+    return if str.to_s.empty?
+    Date.parse(str)
+  end
+
+  def party_from(node)
+    return ['Democratic Labour Party', 'DLP'] if node.text.include? 'www.dlpbarbados.org'
+    return ['Barbados Labour Party', 'BLP'] if node.text.include? 'www.blp.org.bb'
+    return ['Barbados Labour Party', 'BLP'] if node.text.include? 'voteblp.com'
+    return ['Barbados Labour Party', 'BLP'] if node.css('img/@src').text.include? 'blp_logo.jpg'
+    raise binding.pry
+  end
 end
 
 def scrape_list(url)
@@ -40,24 +92,7 @@ def scrape_list(url)
 end
 
 def scrape_member(url)
-  noko = noko_for(url)
-
-  party, party_id = party_from(noko.xpath('.//h2[contains(.,"Party")]/following-sibling::p[1]'))
-
-  data = {
-    id:           url[/(\d+)$/, 1],
-    name:         noko.css('h1.page-title').text.gsub(', M.P.','').tidy,
-    image:        noko.css('div.entry-thumb img/@src').text,
-    constituency: noko.css('.post-excerpt').text.tidy,
-    party:        party,
-    party_id:     party_id,
-    role:         noko.xpath('.//h3[contains(.,"Designation")]/following-sibling::p').text.tidy,
-    telephone:    noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Telephone:\s*(.*?)\s*$/, 1].tidy,
-    fax:          noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Fax:\s*(.*?)\s*$/, 1].tidy,
-    email:        noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text.lines.find { |l| l.include? '@' }.tidy,
-    term:         '2013',
-    source:       url,
-  }
+  data = MemberPage.new(response: Scraped::Request.new(url: url).response).to_h
   # puts data
   ScraperWiki.save_sqlite(%i(id term), data)
 end
