@@ -1,15 +1,12 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'scraperwiki'
+require 'date'
 require 'nokogiri'
 require 'open-uri'
-require 'cgi'
-require 'json'
-require 'date'
-require 'colorize'
-
 require 'pry'
+require 'scraperwiki'
+
 require 'open-uri/cached'
 OpenURI::Cache.cache_path = '.cache'
 
@@ -39,7 +36,6 @@ end
 def scrape_member(url)
   noko = noko_for(url)
 
-  # binding.pry
   party, party_id = party_from(noko.xpath('.//h2[contains(.,"Party")]/following-sibling::p[1]'))
 
   data = { 
