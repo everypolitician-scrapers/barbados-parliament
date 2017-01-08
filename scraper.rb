@@ -10,6 +10,12 @@ require 'scraperwiki'
 require 'open-uri/cached'
 OpenURI::Cache.cache_path = '.cache'
 
+class MembersPage < Scraped::HTML
+  field :member_urls do
+    noko.css('div#primary a[href*="/member/"]/@href').map(&:text)
+  end
+end
+
 def noko_for(url)
   Nokogiri::HTML(open(url).read)
 end
@@ -28,8 +34,7 @@ def party_from(node)
 end
 
 def scrape_list(url)
-  noko = noko_for(url)
-  noko.css('div#primary a[href*="/member/"]/@href').map(&:text).each do |link|
+  MembersPage.new(response: Scraped::Request.new(url: url).response).member_urls.each do |link|
     scrape_member(link)
   end
 end
