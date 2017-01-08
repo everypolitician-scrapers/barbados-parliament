@@ -1,0 +1,43 @@
+---
+request:
+  method: get
+  uri: http://www.barbadosparliament.com/member/listall
+  body:
+    encoding: US-ASCII
+    string: ''
+  headers:
+    Accept-Encoding:
+    - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+    Accept:
+    - "*/*"
+    User-Agent:
+    - Ruby
+response:
+  status:
+    code: 200
+    message: OK
+  headers:
+    Date:
+    - Sun, 08 Jan 2017 12:06:27 GMT
+    Server:
+    - Apache
+    X-Powered-By:
+    - PHP/5.3.29
+    Expires:
+    - Thu, 19 Nov 1981 08:52:00 GMT
+    Cache-Control:
+    - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+    Pragma:
+    - no-cache
+    Set-Cookie:
+    - PHPSESSID=afa53aba022ab183d6a6a99b4ddb9c6f; path=/
+    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%225d0aa927e6db73a9e62b024cc1ba9cff%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A13%3A%2282.38.191.188%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221483877187%22%3B%7D1f9e3a1866855266a8a157da827ff0d2;
+      expires=Sun, 08-Jan-2017 14:06:27 GMT; path=/
+    Transfer-Encoding:
+    - chunked
+    Content-Type:
+    - text/html
+  body:
+    encoding: UTF-8
+  http_version: 
+recorded_at: Sun, 08 Jan 2017 12:06:27 GMT
