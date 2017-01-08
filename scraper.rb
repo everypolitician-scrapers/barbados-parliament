@@ -40,7 +40,7 @@ def scrape_member(url)
 
   data = {
     id:           url[/(\d+)$/, 1],
-    name:         noko.css('h1.page-title').text.tidy,
+    name:         noko.css('h1.page-title').text.gsub(', M.P.','').tidy,
     image:        noko.css('div.entry-thumb img/@src').text,
     constituency: noko.css('.post-excerpt').text.tidy,
     party:        party,
