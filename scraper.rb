@@ -23,7 +23,8 @@ def party_from(node)
   return ['Democratic Labour Party', 'DLP'] if node.text.include? 'www.dlpbarbados.org'
   return ['Barbados Labour Party', 'BLP'] if node.text.include? 'www.blp.org.bb'
   return ['Barbados Labour Party', 'BLP'] if node.text.include? 'voteblp.com'
-  raise node.text
+  return ['Barbados Labour Party', 'BLP'] if node.css('img/@src').text.include? 'blp_logo.jpg'
+  raise binding.pry
 end
 
 def scrape_list(url)
