@@ -34,11 +34,17 @@ class MemberPage < Scraped::HTML
   end
 
   field :party do
-    party_info.first
+    return 'Democratic Labour Party' if party_id == 'DLP'
+    return 'Barbados Labour Party' if party_id == 'BLP'
+    raise 'Uknown party'
   end
 
   field :party_id do
-    party_info.last
+    return 'DLP' if party_info.text.include? 'www.dlpbarbados.org'
+    return 'BLP' if party_info.text.include? 'www.blp.org.bb'
+    return 'BLP' if party_info.text.include? 'voteblp.com'
+    return 'BLP' if party_info.css('img/@src').text.include? 'blp_logo.jpg'
+    raise 'Unknown party'
   end
 
   field :role do
@@ -68,20 +74,12 @@ class MemberPage < Scraped::HTML
   private
 
   def party_info
-    party_from(noko.xpath('.//h2[contains(.,"Party")]/following-sibling::p[1]'))
+    noko.xpath('.//h2[contains(.,"Party")]/following-sibling::p[1]')
   end
 
   def date_from(str)
     return if str.to_s.empty?
     Date.parse(str)
-  end
-
-  def party_from(node)
-    return ['Democratic Labour Party', 'DLP'] if node.text.include? 'www.dlpbarbados.org'
-    return ['Barbados Labour Party', 'BLP'] if node.text.include? 'www.blp.org.bb'
-    return ['Barbados Labour Party', 'BLP'] if node.text.include? 'voteblp.com'
-    return ['Barbados Labour Party', 'BLP'] if node.css('img/@src').text.include? 'blp_logo.jpg'
-    raise binding.pry
   end
 end
 
