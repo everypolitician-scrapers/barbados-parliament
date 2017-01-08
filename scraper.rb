@@ -77,14 +77,19 @@ class MemberPage < Scraped::HTML
   end
 end
 
+def scrape(h)
+  url, klass = h.to_a.first
+  klass.new(response: Scraped::Request.new(url: url).response)
+end
+
 def scrape_list(url)
-  MembersPage.new(response: Scraped::Request.new(url: url).response).member_urls.each do |link|
+  scrape(url => MembersPage).member_urls.each do |link|
     scrape_member(link)
   end
 end
 
 def scrape_member(url)
-  data = MemberPage.new(response: Scraped::Request.new(url: url).response).to_h
+  data = scrape(url => MemberPage).to_h
   # puts data
   ScraperWiki.save_sqlite(%i(id term), data)
 end
