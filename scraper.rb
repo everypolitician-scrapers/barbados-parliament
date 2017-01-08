@@ -3,9 +3,8 @@
 # frozen_string_literal: true
 
 require 'date'
-require 'nokogiri'
-require 'open-uri'
 require 'pry'
+require 'scraped'
 require 'scraperwiki'
 
 require 'open-uri/cached'
@@ -41,15 +40,15 @@ def scrape_member(url)
 
   data = {
     id:           url[/(\d+)$/, 1],
-    name:         noko.css('h1.page-title').text.strip,
+    name:         noko.css('h1.page-title').text.tidy,
     image:        noko.css('div.entry-thumb img/@src').text,
-    constituency: noko.css('.post-excerpt').text.strip,
+    constituency: noko.css('.post-excerpt').text.tidy,
     party:        party,
     party_id:     party_id,
-    role:         noko.xpath('.//h3[contains(.,"Designation")]/following-sibling::p').text.strip,
+    role:         noko.xpath('.//h3[contains(.,"Designation")]/following-sibling::p').text.tidy,
     telephone:    noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Telephone:\s*(.*?)\s*$/, 1],
     fax:          noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text[/Fax:\s*(.*?)\s*$/, 1],
-    email:        noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text.lines.find { |l| l.include? '@' }.strip,
+    email:        noko.xpath('.//h2[contains(.,"Contact")]/following-sibling::p').text.lines.find { |l| l.include? '@' }.tidy,
     term:         '2013',
     source:       url,
   }
