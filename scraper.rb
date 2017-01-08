@@ -82,17 +82,11 @@ def scrape(h)
   klass.new(response: Scraped::Request.new(url: url).response)
 end
 
-def scrape_list(url)
-  scrape(url => MembersPage).member_urls.each do |link|
-    scrape_member(link)
-  end
-end
-
-def scrape_member(url)
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
+start = 'http://www.barbadosparliament.com/member/listall'
+scrape(start => MembersPage).member_urls.each do |url|
   data = scrape(url => MemberPage).to_h
   # puts data
   ScraperWiki.save_sqlite(%i(id term), data)
 end
 
-ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
-scrape_list('http://www.barbadosparliament.com/member/listall')
