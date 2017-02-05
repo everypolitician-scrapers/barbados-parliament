@@ -18,7 +18,7 @@ response:
     message: OK
   headers:
     Date:
-    - Sat, 04 Feb 2017 08:13:27 GMT
+    - Sun, 05 Feb 2017 17:45:46 GMT
     Server:
     - Apache
     X-Powered-By:
@@ -30,9 +30,9 @@ response:
     Pragma:
     - no-cache
     Set-Cookie:
-    - PHPSESSID=da18f6105dd9c422e36494909b738371; path=/
-    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%221f10be45ac664ef4f8c2aa035087fb53%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221486196007%22%3B%7D41f436a6681a935926fa4efc4aa5e5db;
-      expires=Sat, 04-Feb-2017 10:13:27 GMT; path=/
+    - PHPSESSID=4e771141184f0745235d660aee220406; path=/
+    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%2242c5fd7ef39febcadf5958e94c863d56%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221486316746%22%3B%7D93c72387a317bf93af21860f086e005a;
+      expires=Sun, 05-Feb-2017 19:45:46 GMT; path=/
     Content-Type:
     - text/html
     Content-Length:
@@ -40,4 +40,4 @@ response:
   body:
     encoding: UTF-8
   http_version: 
-recorded_at: Sat, 04 Feb 2017 08:13:28 GMT
+recorded_at: Sun, 05 Feb 2017 17:45:48 GMT
