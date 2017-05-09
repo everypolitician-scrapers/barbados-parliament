@@ -29,5 +29,5 @@ data = scrape(start => MembersPage).member_urls.map do |url|
 end
 # puts data
 
-ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 ScraperWiki.save_sqlite(%i(id term), data)
