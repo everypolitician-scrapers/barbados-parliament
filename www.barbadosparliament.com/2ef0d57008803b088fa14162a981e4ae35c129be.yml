@@ -1,0 +1,43 @@
+---
+request:
+  method: get
+  uri: https://www.barbadosparliament.com/member/details/8
+  body:
+    encoding: US-ASCII
+    string: ''
+  headers:
+    Accept-Encoding:
+    - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+    Accept:
+    - "*/*"
+    User-Agent:
+    - Ruby
+response:
+  status:
+    code: 200
+    message: OK
+  headers:
+    Date:
+    - Wed, 28 Jun 2017 06:39:10 GMT
+    Server:
+    - Apache
+    X-Powered-By:
+    - PHP/5.3.29
+    Expires:
+    - Thu, 19 Nov 1981 08:52:00 GMT
+    Cache-Control:
+    - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+    Pragma:
+    - no-cache
+    Set-Cookie:
+    - PHPSESSID=290da93db06deb67cb3a44edf9aeca21; path=/
+    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%2242b20974114bf21ff8bee70ee4d22368%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221498631950%22%3B%7Dab373d3e5afcbffe797835aa7c504141;
+      expires=Wed, 28-Jun-2017 08:39:10 GMT; path=/
+    Transfer-Encoding:
+    - chunked
+    Content-Type:
+    - text/html
+  body:
+    encoding: UTF-8
+  http_version: 
+recorded_at: Wed, 28 Jun 2017 06:39:10 GMT
