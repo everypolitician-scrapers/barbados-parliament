@@ -23,7 +23,7 @@ def scrape(h)
   klass.new(response: Scraped::Request.new(url: url).response)
 end
 
-start = 'http://www.barbadosparliament.com/member/listall'
+start = 'https://www.barbadosparliament.com/member/listall'
 data = scrape(start => MembersPage).member_urls.map do |url|
   scrape(url => MemberPage).to_h
 end
