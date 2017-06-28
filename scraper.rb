@@ -27,7 +27,7 @@ start = 'https://www.barbadosparliament.com/member/listall'
 data = scrape(start => MembersPage).member_urls.map do |url|
   scrape(url => MemberPage).to_h
 end
-# puts data
+data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 ScraperWiki.save_sqlite(%i(id term), data)
