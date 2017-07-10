@@ -18,7 +18,7 @@ response:
     message: OK
   headers:
     Date:
-    - Sun, 09 Jul 2017 05:33:22 GMT
+    - Mon, 10 Jul 2017 12:21:42 GMT
     Server:
     - Apache
     X-Powered-By:
@@ -30,9 +30,9 @@ response:
     Pragma:
     - no-cache
     Set-Cookie:
-    - PHPSESSID=d8daf07f01e338ae5993ce183a5eb63a; path=/
-    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22a24c51efe76fdcc595daf8fa8630218c%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221499578402%22%3B%7D26cacafd097332dc961af21f34229ad9;
-      expires=Sun, 09-Jul-2017 07:33:22 GMT; path=/
+    - PHPSESSID=911dea5839977f2297500a0d4a2b2c45; path=/
+    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%227ffe99d00238f67af2bb76c028fc9dc4%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221499689302%22%3B%7D230ef6c29d2759687851af1df5d6e1d2;
+      expires=Mon, 10-Jul-2017 14:21:42 GMT; path=/
     Transfer-Encoding:
     - chunked
     Content-Type:
@@ -40,4 +40,4 @@ response:
   body:
     encoding: UTF-8
   http_version: 
-recorded_at: Sun, 09 Jul 2017 05:33:24 GMT
+recorded_at: Mon, 10 Jul 2017 12:21:44 GMT
