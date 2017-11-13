@@ -18,7 +18,7 @@ response:
     message: OK
   headers:
     Date:
-    - Thu, 09 Nov 2017 07:08:47 GMT
+    - Mon, 13 Nov 2017 05:47:07 GMT
     Server:
     - Apache
     X-Powered-By:
@@ -30,9 +30,9 @@ response:
     Pragma:
     - no-cache
     Set-Cookie:
-    - PHPSESSID=ee7a372b05f0112b17a47eb0a2e084b9; path=/
-    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%222394786c13f798b4d2e07f4780c2169a%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221510211327%22%3B%7Dc9d6c95129de0dda6f259fa1f773543c;
-      expires=Thu, 09-Nov-2017 09:08:47 GMT; path=/
+    - PHPSESSID=6eea3af14541422e01b9fadb30903f69; path=/
+    - ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%228741a999b4b52c4a936edea91bfc066f%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2250.116.3.88%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A4%3A%22Ruby%22%3Bs%3A13%3A%22last_activity%22%3Bs%3A10%3A%221510552027%22%3B%7D587ecb0d998a8643ae98952d84c31bbb;
+      expires=Mon, 13-Nov-2017 07:47:07 GMT; path=/
     Transfer-Encoding:
     - chunked
     Content-Type:
@@ -40,4 +40,4 @@ response:
   body:
     encoding: UTF-8
   http_version: 
-recorded_at: Thu, 09 Nov 2017 07:08:48 GMT
+recorded_at: Mon, 13 Nov 2017 05:47:09 GMT
